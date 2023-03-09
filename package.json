@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "Planet & People REST API",
   "scripts": {
-    "serve": "nodemon -e ts --exec \"npm run start\"",
-    "start": "SET ENV=local&& ts-node src/server.ts",
+    "serve": "nodemon -e ts --exec \"npm run start-dev\"",
+    "start-dev": "SET ENV=local&& ts-node src/server.ts",
+    "start": "node dist/src/server.js",
     "build": "tsc",
     "test-linux": "ENV=local jest --coverage --collectCoverageFrom='./src/**' -i --forceExit --runInBand",
     "test-windows": "SET ENV=local&& jest --coverage --collectCoverageFrom='./src/**' -i --forceExit --runInBand"
