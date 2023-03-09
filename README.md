@@ -22,4 +22,4 @@ This is an implementation of Domain Driven Design pattern using NodeJs with a li
 
 ## Live Version
 
-Play [here](https://tdd-node.onrender.com) with this API deployed at [Render](https://render.com/) and using [AWS RDS](https://aws.amazon.com/rds/) as DBaaS.
+Play [here](https://tdd-node.onrender.com/docs/) with this API deployed at [Render](https://render.com/) and using [AWS RDS](https://aws.amazon.com/rds/) as DBaaS.
