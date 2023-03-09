@@ -1,0 +1,415 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Custom Swapi",
+        "description": "example API using SWAPI",
+        "version": "1.0"
+    },
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/api/planets": {
+            "get": {
+                "summary": "Get planets from SWAPI by given page",
+                "operationId": "getAllPlanets",
+                "tags": [
+                    "Planets"
+                ],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": true,
+                        "description": "The page of the planet list at SWAPI",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful request",
+                        "content":{
+                            "application/json":{
+                                "schema": {
+                                    "$ref": "#/definitions/Planets"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/definitions/Error"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/definitions/Error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/planets/{planetId}": {
+            "get": {
+                "summary": "Get planets by Id",
+                "operationId": "getPlanetById",
+                "tags": [
+                    "Planets"
+                ],
+                "parameters": [
+                    {
+                        "name": "planetId",
+                        "in": "path",
+                        "required": true,
+                        "description": "The id of the planet at SWAPI",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful request",
+                        "content":{
+                            "application/json":{
+                                "schema": {
+                                    "$ref": "#/definitions/PlanetModel"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/definitions/Error"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/definitions/Error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/people": {
+            "get": {
+                "summary": "Get people from SWAPI by given page",
+                "operationId": "getAllPeople",
+                "tags": [
+                    "People"
+                ],
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": true,
+                        "description": "The page of the people list at SWAPI",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful request",
+                        "content":{
+                            "application/json":{
+                                "schema": {
+                                    "$ref": "#/definitions/AllPeople"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/definitions/Error"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/definitions/Error"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Register new people",
+                "operationId": "registerPeople",
+                "tags": [
+                    "People"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/definitions/PeopleModel"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful request",
+                        "content":{
+                            "application/json":{
+                                "schema": {
+                                    "$ref": "#/definitions/PeopleModel"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/definitions/Error"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/definitions/Error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/people/{peopleId}": {
+            "get": {
+                "summary": "Get people by Id",
+                "operationId": "getPeopleById",
+                "tags": [
+                    "People"
+                ],
+                "parameters": [
+                    {
+                        "name": "peopleId",
+                        "in": "path",
+                        "required": true,
+                        "description": "The id of the people at SWAPI",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful request",
+                        "schema": {
+                            "$ref": "#/definitions/PeopleModel"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/definitions/Error"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/definitions/Error"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "PlanetModel": {
+            "type": "object",
+            "required": [
+                "climate",
+                "diameter",
+                "gravity",
+                "name",
+                "population",
+                "residents",
+                "terrain",
+                "url"
+            ],
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "example": "0"
+                },
+                "climate": {
+                    "type": "string"
+                },
+                "diameter": {
+                    "type": "string"
+                },
+                "gravity": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "population": {
+                    "type": "string"
+                },
+                "residents": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "terrain": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                }
+            }
+        },
+        "Planets": {
+            "type": "object",
+            "required":[
+                "count",
+                "planets"
+            ],
+            "properties":{
+                "count": {
+                    "type":"number"
+                },
+                "planets":{
+                    "type":"array",
+                    "items":{
+                        "$ref": "#/definitions/PlanetModel"
+                    }
+                }
+            }
+        },
+        "PeopleModel": {
+            "type": "object",
+            "required": [
+                "name",
+                "birth_year",
+                "eye_color",
+                "gender",
+                "hair_color",
+                "height",
+                "homeworld",
+                "mass",
+                "skin_color"
+            ],
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "example": "0"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "birth_year": {
+                    "type": "string"
+                },
+                "eye_color": {
+                    "type": "string"
+                },
+                "gender": {
+                    "type": "string"
+                },
+                "hair_color": {
+                    "type": "string"
+                },
+                "height": {
+                    "type": "string"
+                },
+                "homeworld": {
+                    "type": "string",
+                    "example": "https://swapi.dev/api/planets/1/"
+                },
+                "mass": {
+                    "type": "string"
+                },
+                "skin_color": {
+                    "type": "string"
+                },
+                "created": {
+                    "type": "string"
+                },
+                "edited": {
+                    "type": "string"
+                }
+            }
+        },
+        "AllPeople": {
+            "type": "object",
+            "required":[
+                "count",
+                "people"
+            ],
+            "properties":{
+                "count": {
+                    "type":"number"
+                },
+                "people":{
+                    "type":"array",
+                    "items":{
+                        "$ref": "#/definitions/PeopleModel"
+                    }
+                }
+            }
+        },
+        "Error": {
+            "type": "object",
+            "required": [
+                "message"
+            ],
+            "properties": {
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
